@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 const App = ()=> {
 
   const [good, setGood] = useState(0)
-  const [neutral ,setNeutral] = useState(0)
-  const [bad , setBad] = useState(0)
+  const [neutral,setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
+
 
   const goodClick = () =>
   {
@@ -22,25 +23,36 @@ const App = ()=> {
   {
     name : 'Give Feedbaack'
   }
-  
-  
   return(
     <div>
       <h1> {course.name}</h1>
       <button onClick = {goodClick}> Good</button>
       <button onClick = {neutralClick}>Neutral</button>
       <button onClick = {badClick}>Bad</button>
-      <h1> statistics </h1>
-      <p>good:{good}</p>
-        <p>neutral :{neutral}</p>
-        <p>bad :{bad}
-       </p>
-       <p>all :{good+neutral+bad}</p>
-       <p>average: {(good - bad)/(good+bad+neutral)}</p>
-       <p>percentage: {good/(good+bad+neutral)}%</p>
-
-
+      <h1> Statistics </h1>
+      <Statistics good = {good} neutral = {neutral} bad = {bad}/>
     </div>
   );
   }
+  const Statistics = (props) =>{
+      let{good,neutral,bad} = props
+      if(good+bad+neutral === 0)
+      return(
+        <div>
+          No feedback given.
+        </div>
+      )
+    else
+    
+    return(
+    <div>
+      good: {good}<br/>
+      neutral: {neutral}<br/>
+      bad: {bad}
+      <p>all : {good+bad+neutral} </p>
+      <p>average :{(good-bad)/(good+bad+neutral)} </p>
+      <p>percentage :{(good*100)/ (good+bad+neutral)}% </p>
+    </div>
+    )   
+    }
 export default App;
