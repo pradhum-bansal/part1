@@ -41,12 +41,14 @@ const App = ()=> {
     
     return(
     <div>
-      <Statistic name ="good" value= {good}/><br/>
-      <Statistic name = "neutral" value= {neutral}/><br/>
+      
+      <Statistic name ="good" value= {good}/> 
+      <Statistic name = "neutral" value= {neutral}/>
       <Statistic name = "bad" value = {bad}/>
-      <p>all : {good+bad+neutral} </p>
-      <p>average :{(good-bad)/(good+bad+neutral)} </p>
-      <p>percentage :{(good*100)/ (good+bad+neutral)}% </p>
+     <tr> <td>all</td> <td>{good+bad+neutral} </td></tr>
+    <tr>  <td>average</td><td>{(good-bad)/(good+bad+neutral)} </td></tr>
+    <tr>  <td>percentage </td><td>{(good*100)/ (good+bad+neutral)}% </td></tr>
+      
     </div>
     )   
     }
@@ -54,9 +56,9 @@ const App = ()=> {
     const Statistic = (props) =>
     {
       return(
-        <div>
-          {props.name} : {props.value}
-        </div>
+        <tr>
+         <td> {props.name}</td> <td> {props.value}</td>
+        </tr>
         
       )
     }
