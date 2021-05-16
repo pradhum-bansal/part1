@@ -2,13 +2,25 @@ import React, { useState } from 'react'
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
+  var arr = Array(6).fill(0)
+  const[vote ,setVote] = useState(arr)
 
-  
-
+  const Vote =()=>
+  {
+    const copy = [...vote]
+    copy[selected] =copy[selected]+1
+    setVote(copy)
+  }
+  const copy = [...vote]
+  console.log(copy)
   return (
     <div>
-      {anecdotes[selected]}
-      <button onClick = {()=>{setSelected( Math.floor(Math.random() *6))}}>click</button>
+      {anecdotes[selected]}<br/>
+      has {vote[selected]} votes<br/>
+      <button onClick = {()=>{setSelected( Math.floor(Math.random() *6))}}>Next Anecdote</button>
+      <button onClick = {()=>{Vote(selected)}}>vote</button>
+      <h1>Anecdote with most votes</h1>
+      {anecdotes[copy.indexOf(Math.max.apply(Math,copy))]} has {[Math.max.apply(Math,copy)]} votes.
     </div>
   )
 }
